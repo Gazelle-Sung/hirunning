@@ -1,0 +1,430 @@
+<body id="main_body">
+  <header class="world">
+    <div id="logo">
+      <p>Hi-Running</p>
+    </div>
+    <div class="back one"></div>
+    <div class="back two"></div>
+    <div class="back three"></div>
+    <div class="back four"></div>
+    <div class="back five"></div>
+    <div class="back six"></div>
+    <div class="back seven"></div>
+    <div class="floor">
+      <div class="rock one"></div>
+      <div class="rock two"></div>
+      <div class="rock three"></div>
+      <div class="grass one"></div>
+      <div class="grass two"></div>
+      <div class="grass three"></div>
+      <div class="grass four"></div>
+      <div class="grass five"></div>
+      <div class="grass six"></div>
+      <div class="grass seven"></div>
+      <div class="grass height"></div>
+      <div class="grass nine"></div>
+      <div class="grass ten"></div>
+    </div>
+    <div class="cloud one"></div>
+    <div class="cloud two"></div>
+    <div class="cloud three"></div>
+    <div class="runner1">
+        <%=image_tag("run.gif")%>
+    </div>
+    <div class="runner2">
+      <%=image_tag("run2.gif")%>
+    </div>
+
+  </header>
+  <section>
+    <div class="hi_running_info col-xs-12 col-sm-8">
+      <div class="Title_name">
+        <span>Hongik Running Plan</span>
+        <button class="cutstom_btn" onclick="open_modal(3)">Add Plan</button>
+      </div>
+      <table>
+        <tr class="table_title">
+          <th>날짜</th>
+          <th>러닝 장소</th>
+          <th>시간</th>
+          <th>만남 장소</th>
+          <th>설명</th>
+          <th>출첵(회장용)</th>
+        </tr>
+        <%@fixed_recents.each do |fixed|%>
+        <tr>
+          <td><%=fixed.date%></td>
+          <td><%=fixed.startlocation%></td>
+          <td><%=fixed.time.strftime("%I:%M %p")%></td>
+          <td><%=fixed.meetlocation%></td>
+          <td><%=fixed.content%></td>
+          <td><a href="check_attendance/<%=fixed.id%>" class="cutstom_btn2" style="float:left" onlick="return attend_check()">출석 체크</a></td>
+        </tr>
+        <%end%>
+      </table>
+    </div>
+    <div class="check_attendance col-xs-12 col-sm-4">
+      <div class="Title_name">
+        <span>Running Rank</span>
+        <button class="cutstom_btn" onclick="open_modal(4)">Add Member</button>
+        <button class="cutstom_btn" onclick="open_modal(6)">Reset Rank</button>
+      </div>
+      <table class="attend_rank_tb">
+        <tr class="table_title">
+          <th id="rank" >랭킹</th>
+          <th>이름</th>
+          <th>참여 횟수</th>
+        </tr>
+        <%i=1%>
+        <%@user_ranks.each do |user_rank|%>
+        <tr>
+          <td><%=i%></td>
+          <td><%=user_rank.name%></td>
+          <td><%=user_rank.participation%></td>
+        </tr>
+        <%i=i+1%>
+        <%end%>
+      </table>
+    </div>
+    <div class="running_info  col-xs-12">
+        <div class="Title_name">
+        <span>Running Info</span>
+        <button class="cutstom_btn" onclick="open_modal(5)">Add Info</button>
+      </div>
+      <div class="row">
+          <%@marathoninfos.each do |marathoninfo|%>
+          <div class="col-xs-11 col-sm-3 card_holder">
+            <div class="card_left">
+              <div class="card_main_info">
+                <p class="price"><%=marathoninfo.price.to_i/1000%>,000원</p>
+                <p class="location"><%=marathoninfo.area%></p>
+                <p class="date"><%=marathoninfo.date%></p>
+              </div>
+              <div class="left_color">
+              </div>
+            </div>
+            <div class="card_right">
+              <div class="card_info">
+                <p class="title"><%=marathoninfo.name%></p>
+                <a href="<%=marathoninfo.site%>" target="_blank"><p class="link">Go Info Page</p></a>
+              </div>
+            </div>
+          </div>
+          <%end%>
+      </div>
+    </div>
+    <div id="footer">
+      <p>Master : 성민규</p>
+      <p>Phone : 010-3703-3017</p>
+      <p>Made By 신우환, 성민규</p>
+      <p>video 이경은</p>
+    </div>
+  </section>
+  
+    <div class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close" onclick="close_modal(0)">&times;</span>
+          <h3>정기 러닝 일정 추가</h3>
+        </div>
+        <div class="modal-body">
+            <form class="form-horizontal" method="post" action="/main/fixed_run_info">
+              <div class="form-group">
+                <label for="date" class="col-sm-2 control-label">날짜</label>
+                <div class="col-sm-10">
+                  <input type="date" class="form-control" name="date" id="date" placeholder="Date">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="run_location" class="col-sm-2 control-label">러닝 장소</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="run_location" name="run_location" placeholder="ex) 상수 나들목">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="time" class="col-sm-2 control-label">시간</label>
+                <div class="col-sm-10">
+                  <input type="time" class="form-control" id="time" name="time" placeholder="time">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="gathring_location" class="col-sm-2 control-label">만남 장소</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="gathring_location" name="gathring_location" placeholder="ex) 문헌관">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="content" class="col-sm-2 control-label">어떤 러닝?</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="content" name="content" placeholder="ex) 2학기 첫러닝">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-12" style="text-align:center;">
+                  <button type="submit" class="btn custom_btn2">일정 추가</button>
+                </div>
+              </div>
+            </form>
+        </div>
+      </div>
+    </div>
+    <div class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close" onclick="close_modal(1)">&times;</span>
+          <h3>멤버 추가</h3>
+        </div>
+        <div class="modal-body">
+            <form class="form-horizontal" method="post" action="/main/add_member">
+              <div class="form-group">
+                <label for="user_name" class="col-sm-2 control-label">멤버 이름</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="user_name" id="user_name" placeholder="홍길동">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="grade" class="col-sm-2 control-label">학년</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="grade" name="grade" placeholder="ex) 4">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="major" class="col-sm-2 control-label">전공</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="major" name="major" placeholder="ex) ~~과">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-12" style="text-align:center;">
+                  <button type="submit" class="btn custom_btn2">멤버 추가</button>
+                </div>
+              </div>
+            </form>
+        </div>
+      </div>
+    </div>
+    <div class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close" onclick="close_modal(2)">&times;</span>
+          <h3>마라톤 일정 추가</h3>
+        </div>
+        <div class="modal-body">
+            <form class="form-horizontal" method="post" action="/main/add_marathoninfo">
+              <div class="form-group">
+                <label for="maraton_name" class="col-sm-2 control-label">마라톤 이름</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="maraton_name" id="maraton_name" placeholder="ex) 아디다스 마이런">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="maraton_price" class="col-sm-2 control-label">가격</label>
+                <div class="col-sm-10">
+                  <input type="number" class="form-control" id="maraton_price" name="price" placeholder="ex) 00000" step="1000">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="location" class="col-sm-2 control-label">출발 장소</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="location" name="location" placeholder="ex) 여의도">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="date" class="col-sm-2 control-label">개최 날짜</label>
+                <div class="col-sm-10">
+                  <input type="date" class="form-control" id="date" name="date">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="site_link" class="col-sm-2 control-label">사이트 링크</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="site_link" name="site_link" placeholder="ex) https://www.~~~~~.com">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-12" style="text-align:center;">
+                  <button type="submit" class="btn custom_btn2">일정 추가</button>
+                </div>
+              </div>
+            </form>
+        </div>
+      </div>
+    </div>
+    <div class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close" onclick="close_modal(3)">&times;</span>
+          <h3>비밀번호 확인</h3>
+          <h5>※ 회장만이 사용할 수 있는 기능입니다.</h5>
+        </div>
+        <div class="modal-body">
+            <label for="password" class="col-sm-1 control-label passworkd_label">비밀번호</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control passwords" name="password" id="password" placeholder="master password">
+            </div>
+            <div class="col-sm-1" style="text-align:center;">
+              <button class="btn custom_btn2 btn_check" onclick="check(3,0)">확인</button>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close" onclick="close_modal(4)">&times;</span>
+          <h3>비밀번호 확인</h3>
+          <h5>※ 회장만이 사용할 수 있는 기능입니다.</h5>
+        </div>
+        <div class="modal-body">
+            <label for="password" class="col-sm-1 control-label passworkd_label">비밀번호</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control passwords" name="password" id="password" placeholder="master password">
+            </div>
+            <div class="col-sm-1" style="text-align:center;">
+              <button class="btn custom_btn2 btn_check" onclick="check(4,1)">확인</button>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close" onclick="close_modal(5)">&times;</span>
+          <h3>비밀번호 확인</h3>
+          <h5>※ 회장만이 사용할 수 있는 기능입니다.</h5>
+        </div>
+        <div class="modal-body">
+            <label for="password" class="col-sm-1 control-label passworkd_label">비밀번호</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control passwords" name="password" id="password" placeholder="master password">
+            </div>
+            <div class="col-sm-1" style="text-align:center;">
+              <button class="btn custom_btn2 btn_check"  onclick="check(5,2)">확인</button>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close" onclick="close_modal(6)">&times;</span>
+          <h3>비밀번호 확인</h3>
+          <h5>※ 회장만이 사용할 수 있는 기능입니다.</h5>
+        </div>
+        <div class="modal-body">
+            <label for="password" class="col-sm-1 control-label passworkd_label">비밀번호</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control passwords" name="password" id="password" placeholder="master password">
+            </div>
+            <div class="col-sm-1" style="text-align:center;">
+              <form method="post" action="/main/reset">
+                <button type="submit" class="btn custom_btn2 btn_check" onclick="return check(6,3)">확인</button>
+              </form>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close" onclick="close_modal(7)">&times;</span>
+          <h3>비밀번호 확인</h3>
+          <h5>※ 회장만이 사용할 수 있는 기능입니다.</h5>
+        </div>
+        <div class="modal-body">
+            <label for="password" class="col-sm-1 control-label passworkd_label">비밀번호</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control passwords" name="password" id="password" placeholder="master password">
+            </div>
+            <div class="col-sm-1" style="text-align:center;">
+              <button type="submit" class="btn custom_btn2 btn_check" onclick="return check(7,4)">확인</button>
+            </div>
+        </div>
+      </div>
+    </div>
+  
+  
+</body>
+<script>
+$(document).ready(function(){
+  $(".card_left").hover(function(){
+      $(this).children(".card_main_info").css("color", "white");
+      $(this).children(".left_color").css("width", "36%");
+    }, function(){
+        $(this).children(".card_main_info").css("color", "black");
+        $(this).children(".left_color").css("width", "5%");
+    });
+});
+
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+function getRandomColor2() {
+  var letters = '0123456789';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 9)];
+  }
+  return color;
+}
+
+var left_color_list = document.getElementsByClassName("left_color");
+for(var i=0; i<left_color_list.length;i++){
+    left_color_list[i].style.background = getRandomColor();
+}
+
+var table_title = document.getElementsByClassName("Title_name");
+for(var j=0; j<table_title.length; j++){
+    table_title[j].style.background = getRandomColor2();
+}
+
+function open_modal(i){
+    var modal = document.getElementsByClassName("modal");
+    var body = document.body;
+    modal[i].style.display = "block";
+    body.overflow = "hidden";
+}
+function close_modal(i){
+    var modal = document.getElementsByClassName("modal");
+    var body = document.body;
+    modal[i].style.display = "none";
+    body.overflow = "auto";
+}
+
+function check(modal_num, open_modal_num){
+    var passwords = document.getElementsByClassName("passwords");
+    if(passwords[open_modal_num].value == "1q2w3e4r"){
+        if(open_modal_num == 3){
+            if(confirm("정말로 출석 횟수를 초기화 하시겠습니까?")){
+                close_modal(modal_num);
+                return true;
+            }
+            else{
+                close_modal(modal_num);
+                return false;
+            }
+        }
+        else if (open_modal_num == 0 || open_modal_num == 1 || open_modal_num == 2 ){
+            close_modal(modal_num);
+            open_modal(open_modal_num);
+        }
+    }
+    else{
+        alert("패스워드를 잘못 입력하였습니다.")
+    }
+}
+</script>
+

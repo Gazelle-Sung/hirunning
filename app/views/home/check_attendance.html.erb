@@ -1,0 +1,82 @@
+<body id="check_body">
+<div id="check_master">
+  <div class="modal-header">
+    <span class="close" onclick="close_modal(4)">&times;</span>
+    <h3>비밀번호 확인</h3>
+    <h5>※ 회장만이 사용할 수 있는 기능입니다.</h5>
+  </div>
+  <div class="modal-body">
+      <label for="password" class="col-sm-1 control-label passworkd_label">비밀번호</label>
+      <div class="col-sm-10">
+        <input type="password" class="form-control passwords" name="password" id="password" placeholder="master password">
+      </div>
+      <div style="text-align:center;">
+        <button class="btn custom_btn3 btn_check" onclick="check()">확인</button>
+        <button class="btn custom_btn3 btn_check" onclick="back()">뒤로가기</button>
+      </div>
+  </div>
+</div>
+<div class="container" id="check_container">
+    <div class="check_run_info">
+        <h2><%=@fixed_info.content%> 출석 체크</h2>
+    </div>
+    <form method="post" action="/check_attendance/check" id="check_form">
+        <div class="check_info">
+          <p id="check_list">아직 출석 체크 안한 인원</p>
+        <%j=0%>
+        <%@users.each do |user|%>
+            <%if Fixedrunning.where('user_id = ? AND date = ? AND description = ?', user.id, @fixed_info.date, @fixed_info.content).empty? %>
+            <input type="checkbox" id="check<%=j%>" name="tag_ids[]" value="<%=user.id%>" />
+            <label class="check_label" for="check<%=j%>">
+              <span class="check_name"></span> <%=user.name%>
+            </label>
+            <%if (j+1)%6==0%>
+                <br>
+            <%end%>
+            <%j=j+1%>
+            <%end%>
+        <%end%>
+        <%if j==0%>
+          <p>모든 멤버가 이미 출석 체크 되었습니다.</p>
+        <%end%>
+        </div>
+        <div class="already_done">
+          <%if @already_done_user.empty? %>
+            <p>출석한 인원을 체크한 후 버튼을 눌러주세요!</p>
+          <%else%>
+            <p id="done_list">이미 출석 체크 한 인원</p>
+            <%@users.each do |user|%>
+              <% @already_done_user.each do |done_user| %>
+                <%if done_user.user_id == user.id %>
+                  <span class="check_name"></span> <%=user.name%>
+                <%end%>
+              <%end%>
+            <%end%>
+          <%end%>
+        </div>
+        <input type="hidden" name="fixed_run_date" value="<%=@fixed_info.date%>"></input>
+        <input type="hidden" name="fixed_run_content" value="<%=@fixed_info.content%>"></input>
+        <br>
+        <button type="submit" class="custom_btn3">Check!!</button>
+    </form>
+</div>
+<script>
+  function check(){
+    var password = document.getElementById("password");
+    if(password.value == "1q2w3e4r"){
+      var check_master = document.getElementById("check_master");
+      var check_container = document.getElementById("check_container");
+      check_master.style.display = "none";
+      check_container.style.display = "block";
+      
+    }
+    else{
+        alert("패스워드를 잘못 입력하였습니다.")
+    }
+}
+function back() {
+    window.history.back();
+}
+</script>
+</body>
+    

@@ -1,0 +1,27 @@
+<body id="index_body">
+    <%=image_tag("back.png", id:"back_img")%>
+  <div class="go">
+    <a href="main" ><%=image_tag("main_logo2.png", id:"index_logo", :onclick=>"stop()")%></a>
+  </div>
+    <%=video_tag("trailer.m4v",autobuffer: true, :loop => true, id:"video")%>
+  <div class="index_content">
+    <p>Click Logo!</p>
+    <p>Go Running</p>
+  </div>
+</body>
+<script>
+$(document).ready(function(){
+  $("#index_logo").hover(function(){
+      $(this).attr("src", "../assets/main_logo.png");
+    }, function(){
+        $(this).attr("src", "../assets/main_logo2.png");
+    });
+});
+setTimeout(function(){
+    document.getElementById("video").play();
+}, 1000);
+function stop(){
+    var vid = document.getElementById("video");
+    vid.pause();
+}
+</script>
