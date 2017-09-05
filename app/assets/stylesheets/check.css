@@ -1,6 +1,6 @@
 #check_body{
   margin: 0;
-  background-image: url("images/back.png");
+  background-image: url("back.png");
   background-size:cover;
   overflow: hidden;
   min-height:100vh;
@@ -115,6 +115,10 @@ input[type="checkbox"]:checked + .check_label:hover .check_name:before {
 .custom_btn3:hover{
   border:3px solid white;
   color:white;  
+}
+.check_run_info {
+    margin-left:20%;
+    margin-right:20%;
 }
 .check_run_info h2{
     border-bottom:2px solid white;

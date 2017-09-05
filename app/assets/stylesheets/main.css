@@ -1,9 +1,9 @@
 @font-face {
   font-family: runFont;
-  src:url('fonts/run.ttf')
+  src:url('font/run.ttf');
 }
 #main_body{
-  background-image: url("images/back.png");
+  background-image: url("back.png");
   background-size:cover;
   background-repeat:no-repeat;
   color:white;
@@ -424,7 +424,10 @@ a:hover{
   width:100%;
   color:white;
 }
-
+.control-label{
+  padding-left: 2px !important;
+  padding-right: 2px !important;
+}
 
 
 /*modal css*/

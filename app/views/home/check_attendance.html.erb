@@ -1,17 +1,16 @@
 <body id="check_body">
 <div id="check_master">
   <div class="modal-header">
-    <span class="close" onclick="close_modal(4)">&times;</span>
     <h3>비밀번호 확인</h3>
     <h5>※ 회장만이 사용할 수 있는 기능입니다.</h5>
   </div>
   <div class="modal-body">
-      <label for="password" class="col-sm-1 control-label passworkd_label">비밀번호</label>
+      <label for="password" class="col-sm-2 control-label passworkd_label">비밀번호</label>
       <div class="col-sm-10">
         <input type="password" class="form-control passwords" name="password" id="password" placeholder="master password">
       </div>
       <div style="text-align:center;">
-        <button class="btn custom_btn3 btn_check" onclick="check()">확인</button>
+        <button class="btn custom_btn3 btn_check" onclick="checking()">확인</button>
         <button class="btn custom_btn3 btn_check" onclick="back()">뒤로가기</button>
       </div>
   </div>
@@ -61,19 +60,6 @@
     </form>
 </div>
 <script>
-  function check(){
-    var password = document.getElementById("password");
-    if(password.value == "1q2w3e4r"){
-      var check_master = document.getElementById("check_master");
-      var check_container = document.getElementById("check_container");
-      check_master.style.display = "none";
-      check_container.style.display = "block";
-      
-    }
-    else{
-        alert("패스워드를 잘못 입력하였습니다.")
-    }
-}
 function back() {
     window.history.back();
 }

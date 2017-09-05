@@ -391,40 +391,24 @@ for(var j=0; j<table_title.length; j++){
     table_title[j].style.background = getRandomColor2();
 }
 
-function open_modal(i){
-    var modal = document.getElementsByClassName("modal");
-    var body = document.body;
-    modal[i].style.display = "block";
-    body.overflow = "hidden";
-}
-function close_modal(i){
-    var modal = document.getElementsByClassName("modal");
-    var body = document.body;
-    modal[i].style.display = "none";
-    body.overflow = "auto";
+back = 0
+setTimeout(change_background, 5000);
+
+function change_background(){
+  if(back == 0){
+    var world_background = document.getElementsByClassName("world");
+    world_background[0].style.background = "linear-gradient(rgb(207, 47, 85),rgb(255, 145, 90),rgb(253,215,99)"
+    back = 1
+    setTimeout(change_background, 7000);
+  }
+  else if(back == 1){
+    var world_background = document.getElementsByClassName("world");
+    world_background[0].style.background = "linear-gradient(rgb(100, 175, 230),rgb(149, 216, 231),white)"
+    back = 0
+    setTimeout(change_background, 5000);
+  }
 }
 
-function check(modal_num, open_modal_num){
-    var passwords = document.getElementsByClassName("passwords");
-    if(passwords[open_modal_num].value == "1q2w3e4r"){
-        if(open_modal_num == 3){
-            if(confirm("정말로 출석 횟수를 초기화 하시겠습니까?")){
-                close_modal(modal_num);
-                return true;
-            }
-            else{
-                close_modal(modal_num);
-                return false;
-            }
-        }
-        else if (open_modal_num == 0 || open_modal_num == 1 || open_modal_num == 2 ){
-            close_modal(modal_num);
-            open_modal(open_modal_num);
-        }
-    }
-    else{
-        alert("패스워드를 잘못 입력하였습니다.")
-    }
-}
+
 </script>
 
