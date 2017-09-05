@@ -22,7 +22,7 @@ module Workspace
     
     config.time_zone = 'Seoul'
     config.encoding = "utf-8"
-    config.assets.paths << "#{Rails.root}/public/videos"
+    config.assets.paths << "#{Rails.root}/app/assets/videos"
     config.assets.initialize_on_precompile = false
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
