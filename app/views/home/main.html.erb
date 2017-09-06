@@ -1,3 +1,4 @@
+
 <body id="main_body">
   <header class="world">
     <div id="logo">
@@ -85,7 +86,7 @@
         <%i=i+1%>
         <%end%>
       </table>
-      <a href="all_member" class="cutstom_btn2" style="float:right; margin-right:15px;">all member</a>
+      <a href="all_member" class="cutstom_btn2" style="float:right; margin-right:15px;">all members</a>
     </div>
     
     <div class="running_info  col-xs-12">
@@ -356,6 +357,7 @@
   
 </body>
 <script>
+
 $(document).ready(function(){
   $(".card_left").hover(function(){
       $(this).children(".card_main_info").css("color", "white");
@@ -383,6 +385,16 @@ function getRandomColor2() {
   return color;
 }
 
+setTimeout(change_back_color, 0000);
+function change_back_color(){
+  var back = document.getElementsByClassName("back");
+  for(var k=0; k<back.length;k++){
+      back[k].style.background = getRandomColor2();
+  }
+  setTimeout(change_back_color, 11000);
+}
+
+
 var left_color_list = document.getElementsByClassName("left_color");
 for(var i=0; i<left_color_list.length;i++){
     left_color_list[i].style.background = getRandomColor();
@@ -392,6 +404,7 @@ var table_title = document.getElementsByClassName("Title_name");
 for(var j=0; j<table_title.length; j++){
     table_title[j].style.background = getRandomColor2();
 }
+
 
 back = 0
 setTimeout(change_background, 5000);
