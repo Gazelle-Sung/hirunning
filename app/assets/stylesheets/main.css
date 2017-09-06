@@ -7,7 +7,7 @@
   background-size:cover;
   background-repeat:no-repeat;
   color:white;
-  overflow: hidden;
+  overflow-x: hidden;
   min-height: 100%;
   font-family: runFont;
 }
@@ -400,10 +400,12 @@ table td{
   font-size:20px;
   font-weight: 600;
   margin-top:7px;
-  margin-bottom: 45px;
   margin-left: 5px;
 }
 .link{
+  position:absolute;
+  bottom:0;
+  right:0;
   float:right;
 }
 a{
@@ -642,7 +644,6 @@ a:hover{
       font-size:20px;
       font-weight: 600;
       margin-top:7px;
-      margin-bottom: 25px;
       margin-left: 5px;
     }
 }
