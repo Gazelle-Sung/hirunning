@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'home/index'=>'home#index'
   get 'main'=>'home#main'
   get 'check_attendance/:id' => 'home#check_attendance'
+  get 'all_member' => 'home#all_member'
   
   post 'check_attendance/check' => 'home#check'
   post 'main/add_marathoninfo' => 'home#add_marathoninfo'

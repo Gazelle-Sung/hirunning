@@ -1,0 +1,13 @@
+#all_member_holder{
+    color:white;
+}
+.member_table_title{
+    background-color: rgb(160,160,160);
+    
+}
+#member_table{
+    text-align: center;
+}
+#member_table th{
+    text-align: center;
+}

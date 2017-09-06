@@ -1,3 +1,286 @@
+#all_member_holder{
+    color:white;
+}
+.member_table_title{
+    background-color: rgb(160,160,160);
+    
+}
+#member_table{
+    text-align: center;
+}
+#member_table th{
+    text-align: center;
+}
+#check_body{
+  margin: 0;
+  background-image: url("back.png");
+  background-size:cover;
+  overflow: hidden;
+  min-height:100vh;
+  max-height: 100vh;
+  color:white;
+}
+#check_form{
+  text-align:center;
+  font-size:18px;
+}
+.check_label {
+  display: inline-block;
+  color: white;
+  cursor: pointer;
+  position: relative;
+  margin-right:15px;
+  min-width:85px;
+}
+.check_label .check_name {
+  display: inline-block;
+  position: relative;
+  background-color: transparent;
+  width: 25px;
+  height: 25px;
+  transform-origin: center;
+  border: 2px solid white;
+  border-radius: 50%;
+  vertical-align: -6px;
+  margin-right: 10px;
+  transition: background-color 150ms 200ms, transform 350ms cubic-bezier(0.78, -1.22, 0.17, 1.89);
+}
+.check_label .check_name:before {
+  content: "";
+  width: 0px;
+  height: 2px;
+  border-radius: 2px;
+  background: white;
+  position: absolute;
+  transform: rotate(45deg);
+  top: 11px;
+  left: 7px;
+  transition: width 50ms ease 50ms;
+  transform-origin: 0% 0%;
+}
+.check_label .check_name:after {
+  content: "";
+  width: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: white;
+  position: absolute;
+  transform: rotate(305deg);
+  top: 15px;
+  left: 8px;
+  transition: width 50ms ease;
+  transform-origin: 0% 0%;
+}
+.check_label:hover .check_name:before {
+  width: 5px;
+  transition: width 100ms ease;
+}
+.check_label:hover .check_name:after {
+  width: 10px;
+  transition: width 150ms ease 100ms;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+input[type="checkbox"]:checked + .check_label .check_name {
+  background-color: white;
+  transform: scale(1.25);
+}
+input[type="checkbox"]:checked + .check_label .check_name:after {
+  width: 10px;
+  background: black;
+  transition: width 150ms ease 100ms;
+}
+input[type="checkbox"]:checked + .check_label .check_name:before {
+  width: 5px;
+  background: black;
+  transition: width 150ms ease 100ms;
+}
+input[type="checkbox"]:checked + .check_label:hover .check_name {
+  background-color: white;
+  transform: scale(1.25);
+}
+input[type="checkbox"]:checked + .check_label:hover .check_name:after {
+  width: 10px;
+  background: black;
+  transition: width 150ms ease 100ms;
+}
+input[type="checkbox"]:checked + .check_label:hover .check_name:before {
+  width: 5px;
+  background: black;
+  transition: width 150ms ease 100ms;
+}
+
+.custom_btn3{
+  font-size:30px;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  background-color: transparent !important;
+  border:3px solid #ccc;
+  color:rgb(205,205,205);
+  border-radius: 5px;
+  margin-right: 6px;
+  min-width:150px;
+  margin-top:70px;
+}
+.custom_btn3:hover{
+  border:3px solid white;
+  color:white;  
+}
+.check_run_info {
+    margin-left:20%;
+    margin-right:20%;
+}
+.check_run_info h2{
+    border-bottom:2px solid white;
+    padding-bottom:20px;
+    margin-top:20px;
+    text-align:center;
+}
+.check_info{
+    margin-left:20%;
+    text-align:left;
+}
+.check_info p{
+  font-size:20px;
+  
+}
+.already_done{
+    margin-left:20%;
+    text-align:left;
+}
+.already_done p{
+  font-size:20px;
+}
+#done_list{
+  margin-top:20px;
+}
+
+#check_master{
+  margin-left:20%;
+  margin-right:20%;
+}
+
+#check_container{
+  display:none;
+}
+
+@media only screen and (max-width: 500px) {
+ .check_info{
+        margin-left:15px;
+    }   
+    .already_done{
+    margin-left:15px;
+}
+}
+#index_body{
+  margin: 0;
+  background-color: rgb(105, 105, 105);
+  overflow: hidden;
+  max-height: 100vh;
+}
+#back_img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: auto;
+  height:auto;
+  min-width: 80%;
+  min-height: 100%;
+  max-height: 100vh;
+  transform:  translate(-50%,-50%);
+  opacity: 0.7;
+  z-index: -2;
+}
+.go{
+  position: absolute;
+  top: 13%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width:200px;
+  height:auto;
+  overflow: hidden;
+}
+.go img{
+  width:100%;
+  height:auto;
+  cursor: pointer;
+}
+
+
+video{
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  width: 60vw;
+  height: auto;
+  opacity: 1;
+  overflow: hidden;
+  transform:  translate(-50%,-50%);
+}
+
+.index_content{
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width:200px;
+  z-index: 4;
+  height:auto;
+  font-size:15px;
+  color:white;
+  text-align: center;
+  overflow: hidden;
+  font-family: runFont;
+}
+@media only screen and (max-width: 500px) {
+  .go{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width:200px;
+    height:auto;
+    overflow: hidden;
+  }
+  video{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    height: auto;
+    opacity: 1;
+    overflow: hidden;
+    transform:  translate(-50%,-50%);
+  }
+  #back_img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    min-height: 100%;
+    max-height: 100vh;
+    transform:  translate(-50%,-50%);
+    opacity: 0.7;
+    z-index: -2;
+  }
+  .index_content{
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width:200px;
+    z-index: 4;
+    height:auto;
+    font-size:15px;
+    color:white;
+    text-align: center;
+    overflow: hidden;
+    font-family: runFont;
+  }
+}
 @font-face {
   font-family: runFont;
   src:url('font/run.ttf');
@@ -646,3 +929,19 @@ a:hover{
       margin-left: 5px;
     }
 }
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+

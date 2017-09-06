@@ -96,4 +96,8 @@ class HomeController < ApplicationController
     
     redirect_to '/main'
   end
+  
+  def all_member
+    @all_members = User.all
+  end
 end

@@ -1,0 +1,32 @@
+<body id="index_body">
+    <%=image_tag("back.png", id:"back_img")%>
+    
+  <div class="container" id="all_member_holder">
+    <div class="check_run_info">
+      
+      <h2>Crew members</h2>    
+      
+      <div>
+        <table id="member_table">
+        <tr class="member_table_title">
+          <th>이름</th>
+          <th>전공</th>
+          <th>학번</th>
+          <th>참석 횟수</th>
+        </tr>
+        <%@all_members.each do |member|%>
+        <tr>
+          <td><%=member.name%></td>
+          <td><%=member.major%></td>
+          <td><%=member.grade%></td>
+          <td><%=member.participation%></td>
+        </tr>
+        <%end%>
+      </table>
+      <a href="main" class="cutstom_btn2" style="float:right; font-size:15px; margin-top:20px;">Go Main</a>
+      </div>
+  <div class="index_content">
+    
+    
+  </div>
+</body>
