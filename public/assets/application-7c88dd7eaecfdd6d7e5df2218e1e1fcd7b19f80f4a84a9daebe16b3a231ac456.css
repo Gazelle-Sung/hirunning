@@ -290,7 +290,7 @@ video{
   background-size:cover;
   background-repeat:no-repeat;
   color:white;
-  overflow: hidden;
+  overflow-x: hidden;
   min-height: 100%;
   font-family: runFont;
 }
@@ -683,10 +683,12 @@ table td{
   font-size:20px;
   font-weight: 600;
   margin-top:7px;
-  margin-bottom: 45px;
   margin-left: 5px;
 }
 .link{
+  position:absolute;
+  bottom:0;
+  right:0;
   float:right;
 }
 a{
@@ -899,6 +901,7 @@ a:hover{
       margin-top: 15px;
       margin-bottom: 3px;
       min-height:100px;
+      height:100%;
       background-color: white;
       box-shadow: 3px 3px 2px #888888;
       border-radius: 10px;
@@ -908,11 +911,13 @@ a:hover{
       display:inline-block;
       width:35%;
       min-height:100px;
+      height:100%;
     }
     .card_right{
       display:inline-block;
       width:60%;
       min-height:100px;
+      height:100%;
       border-radius: 0 10px 10px 0;
     }
     .price{
@@ -925,7 +930,6 @@ a:hover{
       font-size:20px;
       font-weight: 600;
       margin-top:7px;
-      margin-bottom: 25px;
       margin-left: 5px;
     }
 }

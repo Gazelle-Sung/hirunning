@@ -618,6 +618,7 @@ a:hover{
       margin-top: 15px;
       margin-bottom: 3px;
       min-height:100px;
+      height:100%;
       background-color: white;
       box-shadow: 3px 3px 2px #888888;
       border-radius: 10px;
@@ -627,11 +628,13 @@ a:hover{
       display:inline-block;
       width:35%;
       min-height:100px;
+      height:100%;
     }
     .card_right{
       display:inline-block;
       width:60%;
       min-height:100px;
+      height:100%;
       border-radius: 0 10px 10px 0;
     }
     .price{
